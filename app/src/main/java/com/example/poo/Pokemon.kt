@@ -1,6 +1,7 @@
 package com.example.poo
 
 import android.widget.Toast
+import com.example.poo.MainActivity.Companion.maincontext
 
 open class Pokemon (protected var name: String = "Pok",
                protected var attackPower: Float = 30f,
@@ -18,7 +19,7 @@ open class Pokemon (protected var name: String = "Pok",
     internal fun getLife(): Float { return this.life }
     internal fun setLife(l: Float) {  this.life = l}
 
-    fun sayHi(){ Toast.makeText(maincontext, "Hola!!! soy $name", Toast.LEGIN_LONG).show()}
+    fun sayHi(){ Toast.makeText(maincontext, "Hola!!! soy $name", Toast.LENGTH_LONG).show()}
 
     fun cure(){ this.life = 100f}
 
@@ -28,7 +29,7 @@ open class Pokemon (protected var name: String = "Pok",
         this.sayHi()
     }
 
-    //fun attack(){ Toast.makeText(maincontext, "Al ataqueeee", Toast.LENGTH_LONG).show() }
+    open fun attack(){ Toast.makeText(maincontext, "Al ataqueeee", Toast.LENGTH_LONG).show() }
 }
 
 class Waterpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
@@ -50,5 +51,21 @@ class Waterpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
         fun breathe(){ this.submergedTime = 0}
         fun immerse(){ this.submergedTime++ }
 
-      //  override fun attack(){ Toast.makeText(maincontext, "Ataque con chorro", Toast.LENGTH_LONG).show()}
+        override fun attack(){ Toast.makeText(maincontext, "Ataque con chorro!!", Toast.LENGTH_LONG).show() }
+}
+
+class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
+    : Pokemon(n, aP, l){
+        private var ballTemperature: Int = 90
+        //public var life: Float = 100f //Sin metodo get, el propio error en rojo lo indica
+
+        fun Firepokemon(n: String, aP: Float, bT: Int){
+            this.name = n
+            this.attackPower = aP
+            this.life = 100f
+            this.ballTemperature = bT
+            this.sayHi()
+        }
+
+        override fun attack(){ Toast.makeText(maincontext, "Ataque con fuego!!", Toast.LENGTH_LONG).show() }
     }

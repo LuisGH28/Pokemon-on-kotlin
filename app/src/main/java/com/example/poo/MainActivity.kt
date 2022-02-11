@@ -1,14 +1,21 @@
 package com.example.poo
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
+   companion object{
+       lateinit var maincontext: Context
+   }
+
     private lateinit var pok: Pokemon
+    private lateinit var  waterPok: Waterpokemon
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +53,8 @@ class MainActivity : AppCompatActivity() {
         bicho.setLife(30f)
         println(bicho.getLife())
 
-
-
     }
-/*
+
     fun createNewPokemon(v: View){
         var etName = findViewById<EditText>(R.id.etName)
         var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
@@ -67,6 +72,48 @@ class MainActivity : AppCompatActivity() {
         loadDataPokemon(tvPokemon, pok)
     }
 
+    fun createNewWaterPokemon(v: View){
+
+        var etWaterName = findViewById<EditText>(R.id.etWaterName)
+        var etWaterAttackPower = findViewById<EditText>(R.id.etWaterAttackPower)
+        var etWaterMaxResistence = findViewById<EditText>(R.id.etWaterMaxResistence)
+
+        waterPok = Waterpokemon()
+
+        if(!etWaterName.text.isNullOrEmpty() && !etWaterAttackPower.text.isNullOrEmpty())
+            waterPok.Waterpokemon(etWaterName.text.toString(),
+                etWaterAttackPower.text.toString().toFloat(),
+                etWaterMaxResistence.text.toString().toInt())
+
+        var ivWaterPokemon = findViewById<ImageView>(R.id.ivWaterPokemon)
+        ivWaterPokemon.setImageResource(R.mipmap.water)
+        ivWaterPokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
+
+        var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        loadDataPokemon(tvWaterPokemon, waterPok)
+    }
+
+    fun cureWaterPokemon(){
+        waterPok.cure()
+        var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        loadDataPokemon(tvWaterPokemon, waterPok)
+    }
+
+    fun sayHiWaterPokemon(v: View){ waterPok.sayHi() }
+
+    fun envolveWaterPokemon(v: View){
+
+        var etEnvolveWaterPokemon = findViewById<EditText>(R.id.etEnvolveWaterPokemon)
+
+        waterPok.envolve(etEnvolveWaterPokemon.text.toString())
+
+        var ivWaterPokemon = findViewById<ImageView>(R.id.ivWaterPokemon)
+        ivWaterPokemon.setImageResource(R.mipmap.water_envolved)
+
+        var tvWaterpokemon = findViewById<TextView>(R.id.tvWaterPokemon)
+        loadDataPokemon(tvWaterpokemon, waterPok)
+    }
+
     private fun loadDataPokemon(tv: TextView, p: Pokemon){
         var description: String = ""
 
@@ -77,5 +124,6 @@ class MainActivity : AppCompatActivity() {
         tv.text = description
     }
 
- */
+
+
 }
