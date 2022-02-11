@@ -1,6 +1,6 @@
 package com.example.poo
 
-class Person (var name: String = "anonym", var passaport: String? = null) {
+open class Person (var name: String = "anonym", var passaport: String? = null) {
     /*
     *
     * Aqui van los atributos y los metodos de nuestro objeto
@@ -13,7 +13,7 @@ class Person (var name: String = "anonym", var passaport: String? = null) {
         name = "Juan"
         passaport = "HFO454HDOD02"
     }
-    fun die(){
-        alive = false
-    }
+    fun die(){ alive = false }
 }
+
+class Athlete (name: String, passaport: String?, var sport: String): Person(name, passaport)
