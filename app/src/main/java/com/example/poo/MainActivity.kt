@@ -19,10 +19,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pok: Pokemon
     private lateinit var  waterPok: Waterpokemon
     private lateinit var firePok: Firepokemon
+    private lateinit var earthPokemon: Earthpokemon
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        maincontext = this
 
 /*
         var jota: Person = Person(name = "Luis", passaport = "A456fFg73")
@@ -173,6 +176,49 @@ class MainActivity : AppCompatActivity() {
         var tvFirePokemon = findViewById<TextView>(R.id.tvFirePokemon)
         loadDataPokemon(tvFirePokemon, firePok)
     }
+
+    fun createNewEarthPokemon(v: View){
+        var etEarthName = findViewById<EditText>(R.id.etEarthName)
+        var etEarthAttackPower = findViewById<EditText>(R.id.etEarthAttackPower)
+        var etEarthMaxDepth = findViewById<EditText>(R.id.etEarthMaxDepth)
+
+        earthPokemon = Earthpokemon()
+
+        if(!etEarthName.text.isNullOrEmpty() && !etEarthName.text.isNullOrEmpty())
+            earthPokemon.Earthpokemon(etEarthName.text.toString(),
+                etEarthAttackPower.text.toString().toFloat(),
+                etEarthMaxDepth.text.toString().toInt())
+
+
+        var ivEarthPokemon = findViewById<ImageView>(R.id.ivEarthPokemon)
+        ivEarthPokemon.setImageResource(R.mipmap.earth)
+        ivEarthPokemon.setBackgroundColor(ContextCompat.getColor(this,R.color.white))
+
+        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        loadDataPokemon(tvEarthPokemon, firePok)
+
+    }
+
+    fun cureEarthPokemon(v: View){
+        earthPokemon.cure()
+        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        loadDataPokemon(tvEarthPokemon, firePok)
+    }
+
+    fun sayHiEarthPokemon(v: View){ earthPokemon.sayHi() }
+
+    fun evolveEarthPokemon(v: View){
+        var etEvolveEarthPokemon = findViewById<EditText>(R.id.etEvolveEarthPokemon)
+
+        firePok.envolve(etEvolveEarthPokemon.text.toString())
+
+        var ivEarthPokemon = findViewById<ImageView>(R.id.ivEarthPokemon)
+        ivEarthPokemon.setImageResource(R.mipmap.earth_evolved)
+
+        var tvEarthPokemon = findViewById<TextView>(R.id.tvEarthPokemon)
+        loadDataPokemon(tvEarthPokemon, firePok)
+    }
+
 
     private fun figth(p1: Pokemon, p2: Pokemon){
         var emtLog = findViewById<EditText>(R.id.emtLog)

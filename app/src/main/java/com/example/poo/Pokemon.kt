@@ -67,5 +67,30 @@ class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
             this.sayHi()
         }
 
-        override fun attack(){ Toast.makeText(maincontext, "Ataque con fuego!!", Toast.LENGTH_LONG).show() }
+        override fun attack(){
+
+            super.attack()
+            Toast.makeText(maincontext, "Ataque con fuego!!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+class Earthpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
+    : Pokemon(n, aP, l){
+        private var depth: Int = 150
+
+        //public var life: Float = 100f // SIN METODO GET, EL PROPIO ERROR EN ROJO LO INDICA
+
+        fun Earthpokemon(n: String, aP: Float, d: Int){
+            this.name = n
+            this.attackPower = aP
+            this.life = 100f
+            this.depth = d
+            this.sayHi()
+        }
+
+        fun digTunnel(){
+            Toast.makeText(maincontext, "Cabare un tunel de ${this.depth}m de profundidad", Toast.LENGTH_LONG).show()
+        }
+
+        override fun attack() { Toast.makeText(maincontext, "Ataque con piedras", Toast.LENGTH_LONG).show() }
     }
