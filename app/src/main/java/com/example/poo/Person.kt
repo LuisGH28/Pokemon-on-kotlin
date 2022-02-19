@@ -1,6 +1,6 @@
 package com.example.poo
 
-open class Person (var name: String = "anonym", var passaport: String? = null) {
+open class Person (var name: String = "anonym", var passaport: String? = null) : Thanks(){
     /*
     *
     * Aqui van los atributos y los metodos de nuestro objeto

@@ -219,6 +219,9 @@ class MainActivity : AppCompatActivity() {
         loadDataPokemon(tvEarthPokemon, firePok)
     }
 
+    fun sayBayEarthPokemon(v: View){
+        earthPokemon.sayBay()
+    }
 
     private fun figth(p1: Pokemon, p2: Pokemon){
         var emtLog = findViewById<EditText>(R.id.emtLog)

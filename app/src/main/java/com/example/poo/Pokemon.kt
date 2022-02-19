@@ -5,7 +5,7 @@ import com.example.poo.MainActivity.Companion.maincontext
 
 open class Pokemon (protected var name: String = "Pok",
                protected var attackPower: Float = 30f,
-               protected var life: Float = 100f){
+               protected var life: Float = 100f) : Thanks(){
 
     fun Pokemon (n: String, aP: Float){
         this.name = n
@@ -21,7 +21,10 @@ open class Pokemon (protected var name: String = "Pok",
 
     fun sayHi(){ Toast.makeText(maincontext, "Hola!!! soy $name", Toast.LENGTH_LONG).show()}
 
-    fun cure(){ this.life = 100f}
+    fun cure(){
+        this.life = 100f
+        this.thanksCure()
+    }
 
     fun envolve(n: String){
         this.name = n
@@ -75,7 +78,7 @@ class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
     }
 
 class Earthpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
-    : Pokemon(n, aP, l){
+    : Pokemon(n, aP, l), SayBay{
         private var depth: Int = 150
 
         //public var life: Float = 100f // SIN METODO GET, EL PROPIO ERROR EN ROJO LO INDICA
@@ -94,3 +97,11 @@ class Earthpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
 
         override fun attack() { Toast.makeText(maincontext, "Ataque con piedras", Toast.LENGTH_LONG).show() }
     }
+
+abstract class Thanks(){
+    fun thanksCure(){ Toast.makeText(maincontext, "Gracias por curarme! ", Toast.LENGTH_LONG).show() }
+}
+
+interface SayBay{
+    fun sayBay(){ Toast.makeText(maincontext, "ByeBye!", Toast.LENGTH_LONG).show() }
+}
