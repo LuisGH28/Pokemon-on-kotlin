@@ -15,7 +15,7 @@ open class Pokemon (protected var name: String = "Pok",
     }
 
     internal fun getName(): String{ return this.name }
-    internal  fun getAttackPower(): Float{ return this.attackPower }
+    internal fun getAttackPower(): Float{ return this.attackPower }
     internal fun getLife(): Float { return this.life }
     internal fun setLife(l: Float) {  this.life = l}
 
@@ -61,6 +61,8 @@ class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
     : Pokemon(n, aP, l){
         private var ballTemperature: Int = 90
         //public var life: Float = 100f //Sin metodo get, el propio error en rojo lo indica
+        lateinit var ball: ballFire
+        var numBall: Int = 0
 
         fun Firepokemon(n: String, aP: Float, bT: Int){
             this.name = n
@@ -71,11 +73,19 @@ class Firepokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
         }
 
         override fun attack(){
-
             super.attack()
             Toast.makeText(maincontext, "Ataque con fuego!!", Toast.LENGTH_LONG).show()
+            Toast.makeText(maincontext, "Bola ${++numBall}", Toast.LENGTH_LONG).show()
+            ball = ballFire(ballTemperature)
+            ball.throwBall()
         }
     }
+
+class ballFire(var t: Int = 100){
+    fun throwBall(){
+        Toast.makeText(maincontext, "Tirando bola con temperatura de $t", Toast.LENGTH_LONG).show()
+    }
+}
 
 class Earthpokemon(n: String = "Pok", aP: Float = 30f, l: Float = 100f)
     : Pokemon(n, aP, l), SayBay{
@@ -105,3 +115,5 @@ abstract class Thanks(){
 interface SayBay{
     fun sayBay(){ Toast.makeText(maincontext, "ByeBye!", Toast.LENGTH_LONG).show() }
 }
+
+

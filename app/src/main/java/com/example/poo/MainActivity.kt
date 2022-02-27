@@ -61,6 +61,15 @@ class MainActivity : AppCompatActivity() {
 
  */
 
+        var sc = SubClasses()
+        println(sc.presentar())
+
+        var ani = SubClasses.Anidad()
+        println(ani.presentar())
+
+        var inn = SubClasses().Interna()
+        println(inn.presentar())
+
         var btFight = findViewById<Button>(R.id.btFight)
         btFight.setOnClickListener {
             figth(waterPok, firePok)
