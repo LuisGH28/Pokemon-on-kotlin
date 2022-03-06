@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firePok: Firepokemon
     private lateinit var earthPokemon: Earthpokemon
 
+    object fernanda{
+        var apodo = "fer"
+        fun saludo(){"Hola me llaman $apodo"}
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -70,12 +75,45 @@ class MainActivity : AppCompatActivity() {
         var inn = SubClasses().Interna()
         println(inn.presentar())
 
-        var btFight = findViewById<Button>(R.id.btFight)
+        println(fernanda.saludo())
+        fernanda.apodo = "SuperFer"
+        println(fernanda.saludo())
+
+
+        var sol: star = star("Sol", 696304f, "Via Lactea")
+        println(sol)
+
+        var betelqeuse : star = star("Betelqeuse", 617100000f, "Orion")
+        betelqeuse.alive = false
+        println(betelqeuse.alive)
+
+        var nueva: star = star()
+        println(nueva)
+
+
+        var today: days = days.LUNES
+        var week = days.values()
+        for( i in week) println(i)
+
+        println(days.valueOf("MIERCOLES"))
+        println(today.name)
+        println(today.ordinal)
+        println(today.saludo())
+        println(today.laboral)
+        println(today.jornada)
+
+
+
+
+
+      /*  var btFight = findViewById<Button>(R.id.btFight)
         btFight.setOnClickListener {
             figth(waterPok, firePok)
         }
-    }
 
+       */
+    }
+/*
     fun createNewPokemon(v: View){
         var etName = findViewById<EditText>(R.id.etName)
         var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
@@ -266,4 +304,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+ */
 }
