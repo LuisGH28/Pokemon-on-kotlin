@@ -26,18 +26,75 @@ class MainActivity : AppCompatActivity() {
         fun saludo(){"Hola me llaman $apodo"}
     }
 
+
+    private fun String.noSpaces() : String{
+        return this.replace(" ", "")
+    }
+
+    private fun IntArray.show(){
+        print("[")
+        for (i in this) print("$i ")
+        println("]");
+    }
+
+
+    private fun calculadora( n1: Int, n2: Int, fn: (Int, Int)->Int) : Int{
+        return fn(n1, n2)
+    }
+
+    private fun suma(x: Int, y: Int): Int{ return x+y}
+    private fun resta(x: Int, y: Int): Int{ return x-y}
+    private fun multiplicacion(x: Int, y: Int) = x*y
+    private fun divide(x: Int, y: Int) =  x/y
+
+    private fun inColombia(h: Float): Boolean{
+        return h>=1.6f
+    }
+
+    private fun inSpain(h: Float): Boolean{
+        return h>=1.65f
+    }
+
+    private fun Person.checkPolice(fn: (Float)->Boolean): Boolean {
+        return fn(height)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         maincontext = this
 
-/*
-        var jota: Person = Person(name = "Luis", passaport = "A456fFg73")
+        var usuario = "  soy   yo   "
+        println("${usuario}  (${usuario.length})  - ${usuario.noSpaces()}  (${usuario.noSpaces().length})")
+
+
+        var array1: Array<Int> = arrayOf(5, 3, 4, 7, 1)
+        var array2 = IntArray(3)
+        array2[0] = 10
+        array2[1] = 20
+        array2[2] = 30
+        println("array 2:  "); array2.show();
+
+        var array3: IntArray = intArrayOf(1, 2, 3, 4, 5)
+        println("array 3:  "); array3.show();
+
+        println("La suma de 80 y 20 es ${calculadora(80, 20, ::suma)}")
+        println("La resta de 80 y 20 es ${calculadora(80, 20, ::resta)}")
+        println("La multiplicacion de 80 y 20 es ${calculadora(80, 20, ::multiplicacion)}")
+        println("La division de 80 y 20 es ${calculadora(80, 20, ::divide)}")
+
+
+
+
+        var jota: Person = Person(name = "Luis", passaport = "A456fFg73", 1.62f)
         var anonym: Person = Person()
         println(jota.alive)
         println(jota.name)
         println(jota.passaport)
+        if(jota.checkPolice(::inColombia)) println("{$jota.name} puede ser Policia en Colombia")
+        if(jota.checkPolice(::inSpain)) println("{$jota.name} puede ser Policia en España")
+
+
 
         anonym.Person()
         anonym.name = "Pablo"
@@ -64,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         bicho.setLife(30f)
         println(bicho.getLife())
 
- */
+
 
         var sc = SubClasses()
         println(sc.presentar())
@@ -106,14 +163,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-      /*  var btFight = findViewById<Button>(R.id.btFight)
+       var btFight = findViewById<Button>(R.id.btFight)
         btFight.setOnClickListener {
             figth(waterPok, firePok)
         }
 
-       */
+
     }
-/*
+
     fun createNewPokemon(v: View){
         var etName = findViewById<EditText>(R.id.etName)
         var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
@@ -302,8 +359,4 @@ class MainActivity : AppCompatActivity() {
         var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
-
-
-
- */
 }
