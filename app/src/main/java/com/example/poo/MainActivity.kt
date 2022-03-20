@@ -83,8 +83,34 @@ class MainActivity : AppCompatActivity() {
         println("La multiplicacion de 80 y 20 es ${calculadora(80, 20, ::multiplicacion)}")
         println("La division de 80 y 20 es ${calculadora(80, 20, ::divide)}")
 
+        var funcion = { x: Int, y: Int -> x+y }
+        println("La suma de 80 y 20 con variables es ${calculadora(80, 20, funcion)}")
 
+        funcion = { x: Int, y: Int -> x-y }
+        println("La resta de 50 y 10 con variables es ${calculadora(50, 10, funcion)}")
 
+        println("La suma de 80 y 20 con lambda es ${calculadora(80, 20,  { x: Int, y: Int -> x+y })}")
+        println("La resta de 50 y 10 con lambda es ${calculadora(50, 10, { x: Int, y: Int -> x-y })}")
+        println("La potencia de 2 elevado a 5 con lambda es ${calculadora(2, 5)
+            { x, y ->
+                var valor = 1
+                for (i in 1..y) valor *= x
+    
+                valor
+            }
+        }")
+
+        var array4 = IntArray(10) {5}
+        println("array 4:  "); array4.show();
+
+        var array5 = IntArray(10){it}
+        println("array 5:  "); array5.show();
+
+        var array6 = IntArray(10){it*2}
+        println("array 6:  "); array6.show();
+
+        var array7 = IntArray(10){ i -> i*3 }
+        println("array 7:  "); array7.show();
 
         var jota: Person = Person(name = "Luis", passaport = "A456fFg73", 1.62f)
         var anonym: Person = Person()
@@ -164,6 +190,13 @@ class MainActivity : AppCompatActivity() {
 
 
        var btFight = findViewById<Button>(R.id.btFight)
+      /*  btFight.setOnClickListener({
+            view ->
+            figth(waterPok, firePok)
+        })
+
+      */
+
         btFight.setOnClickListener {
             figth(waterPok, firePok)
         }
