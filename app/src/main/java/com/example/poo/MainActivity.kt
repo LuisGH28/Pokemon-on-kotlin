@@ -10,6 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 
+
+typealias aliasObjeto = SubClasses.Anidad
+typealias aliasDato = MutableMap<Int, ArrayList<String>>
+typealias aliasFuncion = (a: Int, b: Int) -> Int
+
 class MainActivity : AppCompatActivity() {
 
    companion object{
@@ -59,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         return fn(height)
     }
 
+    private fun recorrerArray(array: IntArray, fn: (Int) -> Unit){
+        for(i in array)
+            fn(i)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -112,6 +121,13 @@ class MainActivity : AppCompatActivity() {
         var array7 = IntArray(10){ i -> i*3 }
         println("array 7:  "); array7.show();
 
+        var suma = 0
+        recorrerArray(array7){
+            suma += it
+        }
+
+        println("La suma de todos los elementos del array 7 es $suma")
+
         var jota: Person = Person(name = "Luis", passaport = "A456fFg73", 1.62f)
         var anonym: Person = Person()
         println(jota.alive)
@@ -155,8 +171,18 @@ class MainActivity : AppCompatActivity() {
         var ani = SubClasses.Anidad()
         println(ani.presentar())
 
+        var anidada = aliasObjeto()
+        println(anidada.presentar())
+
         var inn = SubClasses().Interna()
         println(inn.presentar())
+
+
+        var saludo: aliasDato = mutableMapOf()
+        saludo[0] = arrayListOf("Hola", "Adios")
+        saludo[1] = arrayListOf("Hi", "Bye")
+
+
 
         println(fernanda.saludo())
         fernanda.apodo = "SuperFer"
