@@ -68,6 +68,22 @@ class MainActivity : AppCompatActivity() {
         for(i in array)
             fn(i)
     }
+
+    private fun value_try(a: Int, b: Int) :Any{
+        /*try catch*/
+        var res =
+            try{
+                println("Doivision $a/$b")
+                
+                a/b
+            }catch (e: Exception){
+                println("Vamos a manejar este error :D")
+
+                "Division no permitida"
+            }
+        return res
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -212,9 +228,24 @@ class MainActivity : AppCompatActivity() {
         println(today.jornada)
 
 
+        try{
+            println("Doivision 5/0 = ${5/0}")
+
+            a/b
+        }catch (e: Exception){
+            println("Vamos a manejar este error :D")
+
+            "Division no permitida"
+        }finally{
+            println("Pase lo que pase haremos cositas")
+        }
 
 
-
+        var res1 = value_try(10, 2) /*excecute try block*/
+        println(res1)
+        var res2 = value_try(10, 0) /*execute catch block*/
+        println(res2)
+/*
        var btFight = findViewById<Button>(R.id.btFight)
       /*  btFight.setOnClickListener({
             view ->
@@ -226,10 +257,10 @@ class MainActivity : AppCompatActivity() {
         btFight.setOnClickListener {
             figth(waterPok, firePok)
         }
-
+*/
 
     }
-
+/*
     fun createNewPokemon(v: View){
         var etName = findViewById<EditText>(R.id.etName)
         var etAttackPower = findViewById<EditText>(R.id.etAttackPower)
@@ -418,4 +449,6 @@ class MainActivity : AppCompatActivity() {
         var tvWaterPokemon = findViewById<TextView>(R.id.tvWaterPokemon)
         loadDataPokemon(tvWaterPokemon, waterPok)
     }
+
+ */
 }
